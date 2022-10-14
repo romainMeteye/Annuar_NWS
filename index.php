@@ -19,22 +19,6 @@ $query->execute();
 $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
-// require_once ("student.php");
-
-// $students = [];
-
-// // $student = new Student("prenom", "nom");
-// // $student->Initialize("Test");
-// $students[] = new Student("prenom", "nom");
-
-// var_dump($students);
-
-// $student = [];
-
-// $student["age"] = 22;
-// $student["prenom"] = "Romain";
-// $student["nom"] = "Meteye";
-
 ?>
 
 <!doctype html>
@@ -94,6 +78,7 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
         <th scope="col">Email</th>
         <th scope="col">Adresse</th>
         <th scope="col">Ville</th>
+        <th scope="col">En alternance</th>
         <th scope="col">Année</th>
         <th scope="col">Spécialité</th>
       </tr>
@@ -112,6 +97,7 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
           <td><?php echo $contact['contact_email'];?></td>
           <td><?php echo $contact['contact_adresse'];?></td>
           <td><?php echo $contact['contact_ville'];?></td>
+          <td><?php echo $contact['alternance'];?></td>
           <td><?php echo $contact['cycle_id'];?></td>
           <td><?php echo $contact['speciality_id'];?></td>
       </tr>
