@@ -13,7 +13,10 @@ catch (Exception $e)
   die('Erreur : ' . $e->getMessage());
 }
 
-$sql = 'SELECT * FROM contacts';
+$sql = 'SELECT *
+        FROM contacts
+        LEFT JOIN speciality ON contact_id  = contact_id
+        WHERE contacts.speciality_id = speciality.speciality_id;';
 $query = $db->prepare($sql);
 $query->execute();
 $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -97,9 +100,9 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
           <td><?php echo $contact['contact_email'];?></td>
           <td><?php echo $contact['contact_adresse'];?></td>
           <td><?php echo $contact['contact_ville'];?></td>
-          <td><?php echo $contact['alternance'];?></td>
-          <td><?php echo $contact['cycle_id'];?></td>
-          <td><?php echo $contact['speciality_id'];?></td>
+          <td><?php if ($contact['alternance'] == 1) {echo "Oui";} else {echo "Non";} ;?></td>
+          <td><?php echo 'A' . $contact['cycle_id'];?></td>
+          <td><?php echo $contact['speciality_name'];?></td>
       </tr>
         <?php
     };

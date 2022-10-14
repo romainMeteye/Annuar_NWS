@@ -19,20 +19,20 @@ $sql = "INSERT INTO contacts(contact_firstname, contact_lastname, contact_age, c
         VALUES(:firstname, :lastname, :age, :phone, :email, :adress, :city, :alternance)";
 $sth = $db->prepare($sql);
 $sth->execute([
-    'firstname' => "Mathilde",
-    "lastname" => "Ultry",
-    "age" => 19,
-    "phone" => "0748571236",
-    "email" => "mathilde.ultry2@test.fr",
-    "adress" => "104 avenue Charle de Gaule",
-    "city" => "Rouen",
-    "alternance" => 1,
+    'firstname' => "Marie",
+    "lastname" => "Anniess",
+    "age" => 24,
+    "phone" => "0798754653",
+    "email" => "marie-anne27@exemple.com",
+    "adress" => "81 rue de la gloire",
+    "city" => "Louvier",
+    "alternance" => 0,
     ]);
 
 print_r($sth->errorInfo());
 }
 
-// newContact();
+newContact();
 // var_dump($student);
 
 ?>
