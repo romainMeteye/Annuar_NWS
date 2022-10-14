@@ -1,0 +1,17 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  ul li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .tablediv {
+    width: 90%;
+  }
