@@ -8,19 +8,67 @@ catch (Exception $e)
 {
   die('Erreur : ' . $e->getMessage());
 }
-
 $sql = 'SELECT *
         FROM contacts
         LEFT JOIN speciality ON contact_id  = contact_id
-        WHERE contacts.speciality_id = speciality.speciality_id;';
+        WHERE contacts.speciality_id = speciality.speciality_id';
 $query = $db->prepare($sql);
 $query->execute();
 $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
 
+if(isset($_POST['submit'])) {
+
+  $sqlfstname = '';
+  $sqllstname = '';
+  $sqlage = '';
+  $sqlcity = '';
+
+  if(isset($_POST['firstname'])) {
+    $firstname = $_POST['firstname'];
+    $sqlfstname = ' WHERE firstname = ' . $firstname;
+  }
+  if(isset($_POST['lasttname'])) {
+    $lastname = $_POST['lastname'];
+    $sqllstname = ' WHERE firstname = ' . $lasttname;
+  }
+  if(isset($_POST['firstname'])) {
+    $age = $_POST['age'];
+    $sqlage = ' WHERE firstname = ' . $age;
+  }
+  if(isset($_POST['firstname'])) {
+    $city = $_POST['city'];
+    $sqlcity = ' WHERE firstname = ' . $city;
+  }
+  
+  // $alternance = $_POST['altenance'];
+
+
+  $sql = 'SELECT *
+        FROM contacts
+        LEFT JOIN speciality ON contact_id  = contact_id
+        WHERE contacts.speciality_id = speciality.speciality_id';
+  $sql = $sql . $sqlfstname;
+  print_r($sql);
+  $query = $db->prepare($sql);
+  $query->execute();
+  $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 
 <main>
+
+<!-- <article class="d-flex align-content-start flex-wrap mt-4">
+    <form action="index.php" method="post">
+      <p>Nom <input type="text" name="firstname" /></p>
+      <p>Prénom <input type="text" name="lastname" /></p>
+      <p>Age <input type="text" name="age" /></p>
+      <p>Ville <input type="text" name="city" /></p>
+      <p>Alternance <input type="checkbox" name="alternance" /></p>
+      <p><input type="submit" name="submit" value="Rechercher" /></p>
+    </form>
+  </article> -->
+
   <div class="tablediv ml-auto mr-auto mt-3">
   <table class="table text-center">
     <thead>
@@ -55,7 +103,7 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
           <td><?php if ($contact['alternance'] == 1) {echo "Oui";} else {echo "Non";} ;?></td>
           <td><?php echo 'A' . $contact['cycle_id'];?></td>
           <td><?php echo $contact['speciality_name'];?></td>
-          <td><a class="btn btn2 mt-4" href="#deletefunction"><i class="fas fa-trash-alt text-white pe-2"></i>Supprimer</a></td>
+          <td><a class="btn btn2 bg-danger" href="#"><i class="fas fa-trash-alt pe-2"></i>Modifier</a></td>
       </tr>
         <?php
     };

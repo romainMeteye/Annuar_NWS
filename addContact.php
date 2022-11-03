@@ -60,8 +60,6 @@ print_r($sth->errorInfo());
   if(isset($_POST['submit'])) 
    {
      $submition = new Student($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['phone'], $_POST['email'], $_POST['adress'], $_POST['city'], $_POST['alternance']);
-      print_r($submition);
-      print_r($submition->firstname);
       newContact($submition->firstname,$submition->lastname,$submition->age,$submition->phone,$submition->email,$submition->adress,$submition->city,$submition->alternance);
    }
 ?>
