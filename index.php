@@ -1,9 +1,5 @@
-<style>
-    <?php include 'css/main.css'; ?>
-</style>
-
 <?php
-
+  include "header.php";
 try
 {
 	$db = new PDO('mysql:host=localhost;dbname=annuar;charset=utf8', 'root', '');
@@ -24,50 +20,6 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <meta name="theme-color" content="#fafafa">
-</head>
-
-<body>
-
-<header class="navigation">
-
-<nav class="navbar navbar-expand-lg c-navbar-light">
-<div class="navbar container px-3">
-<a class=navbar-brand href=https://normandiewebschool.fr><img width=100 src=https://normandiewebschool.fr/uploads/logo_nws.svg alt="L'école des métiers du numérique"></a>
-<button class=navbar-toggler type=button data-toggle=collapse data-target=#navigation aria-controls=navigation aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span>
-</button>
-<div class="collapse navbar-collapse text-center" id=navigation>
-<ul class="list-inline text-center align-items-center navbar-nav ml-auto mr-auto">
-<li class=nav-item>
-<a class=nav-link href=index.php>Liste des Candidats</a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=addContact.php>Ajouter un Candidat</a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=editContact.php>Modifier un Candidat</a>
-</li>
-</ul>
-</div>
-<img id=burger alt="Ouvrir le menu" class="d-block d-lg-none" src=/uploads/menu_burger.svg>
-</div>
-</nav>
-<img data-src=/uploads/points.svg class="lazyload points" alt>
-</div>
-</nav>
-</header>
 <main>
   <div class="tablediv ml-auto mr-auto mt-3">
   <table class="table text-center">
@@ -103,6 +55,7 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
           <td><?php if ($contact['alternance'] == 1) {echo "Oui";} else {echo "Non";} ;?></td>
           <td><?php echo 'A' . $contact['cycle_id'];?></td>
           <td><?php echo $contact['speciality_name'];?></td>
+          <td><a class="btn btn2 mt-4" href="#deletefunction"><i class="fas fa-trash-alt text-white pe-2"></i>Supprimer</a></td>
       </tr>
         <?php
     };
@@ -110,7 +63,10 @@ $contacts = $query->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
   </div>
-  
+  <div class="d-flex justify-content-center">
+  <img class="barre" src="https://normandiewebschool.fr/uploads/cursus-wave.svg" alt="">
+  </div>
+ 
 
 </main>
 <footer>

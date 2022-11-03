@@ -24,7 +24,7 @@ class Student
     }
 
 
-    public function Initialize()
+    public function Delete()
     {
         
     }
